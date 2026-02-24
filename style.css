@@ -1,4 +1,4 @@
-/* ===== Header and Navigation ===== */
+/* ===== Header & Main Nav ===== */
 header {
   display: flex;
   justify-content: space-between;
@@ -9,16 +9,17 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  flex-wrap: wrap; /* keep responsive but horizontal */
 }
 
+/* Main menu row */
 nav ul {
-  display: flex;           /* main menu links in a row */
+  display: flex;          /* horizontal row */
   list-style: none;
-  gap: 15px;
+  gap: 20px;
   align-items: center;
 }
 
+/* Main menu items */
 nav ul li {
   position: relative;
 }
@@ -30,57 +31,56 @@ nav ul li a {
   padding: 8px 12px;
   border-radius: 5px;
   transition: 0.3s;
-  white-space: nowrap;    /* prevent line breaks */
+  white-space: nowrap;
 }
 
 nav ul li a:hover {
   background: #1c7ed6;
 }
 
-/* Dropdown submenu */
+/* ===== Dropdown menu horizontal ===== */
 .dropdown-menu {
-  display: none;
+  display: flex;          /* horizontal row instead of vertical stack */
   position: absolute;
-  top: 100%;              /* below the main menu item */
+  top: 100%;              /* below the main menu */
   left: 0;
   background: rgba(20,25,35,0.95);
-  padding: 10px 0;
+  padding: 5px 10px;
   border-radius: 5px;
-  min-width: 150px;
+  gap: 10px;              /* space between submenu links */
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
   z-index: 100;
+  visibility: hidden;     /* hide by default */
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-/* Show submenu on hover */
+/* Show dropdown on hover */
 nav ul li.dropdown:hover .dropdown-menu {
-  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Submenu links styling */
+.dropdown-menu li {
+  margin: 0;
 }
 
 .dropdown-menu li a {
   display: block;
-  padding: 8px 15px;
+  padding: 8px 12px;
+  color: #fff;
+  white-space: nowrap;
+  border-radius: 5px;
 }
 
 .dropdown-menu li a:hover {
   background: #0b3d91;
 }
 
-/* Language select stays right */
+/* Language selector stays right */
 header select {
   padding: 5px;
   border-radius: 5px;
   border: none;
-}
-
-/* ===== Responsive tweaks ===== */
-@media(max-width:768px){
-  nav ul {
-    flex-direction: row;   /* keep links horizontal */
-    flex-wrap: wrap;       /* wrap if too long */
-    gap: 10px;
-  }
-
-  .dropdown-menu {
-    position: relative;    /* mobile dropdown flows below */
-  }
 }
